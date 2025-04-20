@@ -26,7 +26,8 @@ def get_model_score(model, frame, custom_names):
     return total_confidence, detections
 
 # === Charger une vidéo ou webcam ===
-cap = cv2.VideoCapture("video.mp4")  # ou cap = cv2.VideoCapture(0) pour webcam
+video_path = "video.mp4"  # Remplace avec le chemin réel ou mets 0 pour webcam
+cap = cv2.VideoCapture(video_path)  # cap = cv2.VideoCapture(0) pour webcam
 
 while True:
     success, frame = cap.read()
@@ -46,9 +47,10 @@ while True:
     else:
         cvzone.putTextRect(frame, "No vehicle detected", (10, 30), scale=1, thickness=2, colorR=(0, 0, 255))
 
-    cv2.imshow("Video Detection", frame)
+    cv2.imshow("Detection Video", frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
 cap.release()
 cv2.destroyAllWindows()
+
