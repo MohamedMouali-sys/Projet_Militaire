@@ -25,8 +25,9 @@ def get_model_score(model, frame, custom_names):
     ]
     return total_confidence, detections
 
-# === Lire une image ===
-image = cv2.imread("image.jpg")  # Remplace par le chemin de ton image
+# === Charger une image ===
+image_path = "image.jpg"  # Remplace avec le chemin réel
+image = cv2.imread(image_path)
 image = cv2.resize(image, (640, 480))
 
 # === Appliquer les modèles ===
@@ -42,6 +43,6 @@ if best_detections:
 else:
     cvzone.putTextRect(image, "No vehicle detected", (10, 30), scale=1, thickness=2, colorR=(0, 0, 255))
 
-cv2.imshow("Image Detection", image)
+cv2.imshow("Detection Image", image)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
